@@ -10,6 +10,8 @@ const navItems = [
   { to: '/contact', label: 'კონტაქტი' },
 ];
 
+const logoSrc = `${import.meta.env.BASE_URL}images/logo.png`;
+
 export default function Header() {
   const [open, setOpen] = useState(false);
   const location = useLocation();
@@ -23,7 +25,7 @@ export default function Header() {
       <div className="container header-inner">
         <Link className="brand-link" to="/" aria-label="მთავარ გვერდზე გადასვლა">
           <span className="brand-mark">
-            <img src="public\images\logo.png" alt="Pro Fitness Digomi" />
+            <img src={logoSrc} alt="Pro Fitness Digomi" />
           </span>
           <span>
             <strong>{gymData.name}</strong>

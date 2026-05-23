@@ -2,6 +2,7 @@ import SectionHeader from '../components/SectionHeader.jsx';
 import { externalLinkProps } from '../data/gymData.js';
 
 const packageIncludes = ['სავარჯიშო დარბაზი', 'ულიმიტო ვიზიტები'];
+const fitpassLogoSrc = `${import.meta.env.BASE_URL}images/fitpass.png`;
 
 const pricePackages = [
   {
@@ -65,7 +66,7 @@ export default function Pricing() {
       <section className="section">
         <div className="container fitpass-highlight">
           <div className="fitpass-logo-placeholder" aria-label="FitPass ლოგოს ადგილი">
-            <img src="/images/fitpass.png" alt="FitPass ლოგო" />
+            <img src={fitpassLogoSrc} alt="FitPass ლოგო" />
           </div>
 
           <div>
