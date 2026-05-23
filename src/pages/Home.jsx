@@ -26,19 +26,35 @@ export default function Home() {
     <>
       <section className="hero-section">
         <div className="container hero-content">
-          <p className="eyebrow">გუდვილ დიღომთან ახლოს</p>
-          <h1>{gymData.name}</h1>
-          <p className="hero-lead">
-            სუფთა, ფართო და მშვიდი დარბაზი პერსონალური ვარჯიშისთვის. დაიწყე თავდაჯერებულად,
-            პროფესიონალ ინსტრუქტორთან და გარემოში, სადაც ზედმეტი ხმაური არ გაბრკოლებს.
-          </p>
-          <div className="hero-actions">
-            <a className="button primary" href={gymData.phones[0].href}>
-              დარეკვა
-            </a>
-            <a className="button secondary" href={gymData.googleMaps} {...externalLinkProps}>
-              რუკაზე ნახვა
-            </a>
+          <div className="hero-copy">
+            <p className="eyebrow">გუდვილ დიღომთან ახლოს</p>
+            <h1>{gymData.name}</h1>
+            <p className="hero-lead">
+              სუფთა, ფართო და მშვიდი დარბაზი პერსონალური ვარჯიშისთვის. დაიწყე თავდაჯერებულად,
+              პროფესიონალ ინსტრუქტორთან და გარემოში, სადაც ზედმეტი ხმაური არ გაბრკოლებს.
+            </p>
+            <div className="hero-actions">
+              <a className="button primary" href={gymData.phones[0].href}>
+                დარეკვა
+              </a>
+              <a className="button secondary" href={gymData.googleMaps} {...externalLinkProps}>
+                რუკაზე ნახვა
+              </a>
+            </div>
+          </div>
+
+          <div className="hero-media-placeholder" aria-label="მთავარი ვიდეო">
+            <iframe
+              title="Pro fitness Digomi ვიდეო"
+              src="https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2F61557244419412%2Fvideos%2F534464599313130%2F&show_text=false&width=560&t=0&autoplay=true"
+              width="560"
+              height="314"
+              style={{ border: 'none', overflow: 'hidden' }}
+              scrolling="no"
+              frameBorder="0"
+              allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+              allowFullScreen
+            />
           </div>
         </div>
       </section>
@@ -54,8 +70,8 @@ export default function Home() {
             <span>მიმოხილვა</span>
           </div>
           <div>
-            <strong>07:30</strong>
-            <span>ყოველდღე გახსნა</span>
+            <strong>07:30 - 00:00</strong>
+            <span>ყოველდღე</span>
           </div>
           <div>
             <strong>FitPass</strong>

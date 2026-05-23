@@ -1,4 +1,3 @@
-import ContactCards from '../components/ContactCards.jsx';
 import SectionHeader from '../components/SectionHeader.jsx';
 import { externalLinkProps, gymData } from '../data/gymData.js';
 
@@ -14,53 +13,55 @@ export default function Contact() {
       </section>
 
       <section className="section">
-        <div className="container contact-layout">
-          <div>
-            <ContactCards />
+        <div className="container contact-map-layout">
+          <div className="contact-info-panel" aria-label="საკონტაქტო ინფორმაცია">
+            <section className="contact-info-group">
+              <h2>ტელეფონი</h2>
+              {gymData.phones.map((phone) => (
+                <a key={phone.href} href={phone.href}>
+                  {phone.label}
+                </a>
+              ))}
+            </section>
 
-            <div className="contact-details">
-              <h2>დეტალები</h2>
-              <p>
-                <strong>მისამართი:</strong> {gymData.address}
-              </p>
-              <p>
-                <strong>ორიენტირი:</strong> {gymData.landmark}
-              </p>
-              <p>
-                <strong>ელფოსტა:</strong>{' '}
-                <a href={`mailto:${gymData.email}`}>{gymData.email}</a>
-              </p>
-              <p>
-                <strong>ინსტაგრამი:</strong>{' '}
-                <a href={gymData.instagram.href} {...externalLinkProps}>
-                  {gymData.instagram.label}, {gymData.instagram.followers} გამომწერი
-                </a>
-              </p>
-              <p>
-                <strong>ფეისბუქი:</strong>{' '}
-                <a href={gymData.facebook.href} {...externalLinkProps}>
-                  {gymData.facebook.followers} გამომწერი
-                </a>
-              </p>
-              <a className="button secondary" href={gymData.googleMaps} {...externalLinkProps}>
-                რუკაზე ნახვა
+            <section className="contact-info-group">
+              <h2>ელ-ფოსტა</h2>
+              <a href={`mailto:${gymData.email}`}>{gymData.email}</a>
+            </section>
+
+            <section className="contact-info-group">
+              <h2>მისამართი</h2>
+              <p>{gymData.address}</p>
+              <p>{gymData.landmark}თან ახლოს</p>
+            </section>
+
+            <section className="contact-info-group">
+              <h2>სამუშაო საათები</h2>
+              <p>ყოველდღე: 07:30 - 00:00</p>
+            </section>
+
+            <div className="contact-social-actions" aria-label="სოციალური ქსელები">
+              <a href={gymData.instagram.href} {...externalLinkProps}>
+                ინსტაგრამი
+              </a>
+              <a href={gymData.facebook.href} {...externalLinkProps}>
+                ფეისბუქი
+              </a>
+              <a href={gymData.googleMaps} {...externalLinkProps}>
+                რუკა
               </a>
             </div>
           </div>
 
-          <aside className="hours-panel" aria-label="სამუშაო საათები">
-            <h2>სამუშაო საათები</h2>
-            <table>
-              <tbody>
-                {gymData.hours.map((item) => (
-                  <tr key={item.day}>
-                    <th scope="row">{item.day}</th>
-                    <td>{item.time}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </aside>
+          <div className="contact-map-panel">
+            <iframe
+              title="Pro fitness Digomi რუკა"
+              src="https://www.google.com/maps?q=20%20Vefkhistkaosani%20St%2C%20Tbilisi%200159&output=embed"
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              allowFullScreen
+            />
+          </div>
         </div>
       </section>
     </>

@@ -22,10 +22,11 @@ export default function Header() {
     <header className="site-header">
       <div className="container header-inner">
         <Link className="brand-link" to="/" aria-label="მთავარ გვერდზე გადასვლა">
-          <span className="brand-mark">PF</span>
+          <span className="brand-mark">
+            <img src="public\images\logo.png" alt="Pro Fitness Digomi" />
+          </span>
           <span>
             <strong>{gymData.name}</strong>
-            <small>{gymData.landmark}</small>
           </span>
         </Link>
 

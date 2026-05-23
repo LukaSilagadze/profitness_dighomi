@@ -8,3 +8,7 @@ React + Vite ვებსაიტი Pro fitness Digomi-სთვის.
 npm install
 npm run dev
 ```
+
+## სურათები
+
+ვებსაიტის სურათები ჩაყარე `public/images` საქაღალდეში და კოდში გამოიყენე მისამართი `/images/filename.jpg`.

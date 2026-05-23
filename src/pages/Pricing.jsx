@@ -1,44 +1,83 @@
 import SectionHeader from '../components/SectionHeader.jsx';
-import { gymData } from '../data/gymData.js';
+import { externalLinkProps } from '../data/gymData.js';
+
+const packageIncludes = ['სავარჯიშო დარბაზი', 'ულიმიტო ვიზიტები'];
+
+const pricePackages = [
+  {
+    title: 'დღიური აბონიმენტი',
+    price: '20 ₾',
+    note: 'ერთჯერადი ვიზიტი',
+  },
+  {
+    title: '7-დღიანი აბონიმენტი',
+    price: '70 ₾',
+    note: '7 დღე',
+  },
+  {
+    title: 'თვიური აბონიმენტი',
+    price: '150 ₾',
+    note: '30 დღე',
+  },
+  {
+    title: 'ოჯახის აბონიმენტი',
+    price: '250 ₾',
+    note: 'ოჯახური პაკეტი',
+  },
+  {
+    title: 'სტუდენტების აბონიმენტი',
+    price: '100 ₾',
+    note: 'სტუდენტური პირობით',
+  },
+];
 
 export default function Pricing() {
   return (
     <>
       <section className="page-hero">
         <div className="container">
-          <SectionHeader eyebrow="ფასები" title="ფასები გადაამოწმეთ ტელეფონით">
-            ვებსაიტზე არ არის მითითებული დაუდასტურებელი ტარიფები. დარეკეთ დარბაზში და მიიღეთ
-            მიმდინარე პირობები პირდაპირ ადმინისტრაციისგან.
+          <SectionHeader eyebrow="ფასები" title="პაკეტები და FitPass">
           </SectionHeader>
         </div>
       </section>
 
+      <section className=" section-muted package-section">
+        <div className="container">
+
+          <div className="price-package-grid">
+            {pricePackages.map((item) => (
+              <article className="price-package-card" key={item.title}>
+                <div>
+                  <h2>{item.title}</h2>
+                </div>
+                <strong>{item.price}</strong>
+                <ul>
+                  {packageIncludes.map((feature) => (
+                    <li key={feature}>{feature}</li>
+                  ))}
+                </ul>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section className="section">
-        <div className="container pricing-layout">
-          <div className="pricing-panel">
-            <p className="eyebrow">აქტუალური პირობები</p>
-            <h2>არ ვიგონებთ ფასებს</h2>
-            <p>
-              ფასები, აბონემენტები და შესაძლო აქციები შეიძლება იცვლებოდეს. ზუსტი ინფორმაციისთვის
-              გამოიყენეთ ტელეფონი, რადგან ეს არის სასურველი საკონტაქტო არხი.
-            </p>
-            <div className="phone-actions">
-              {gymData.phones.map((phone) => (
-                <a className="button primary" key={phone.href} href={phone.href}>
-                  {phone.label}
-                </a>
-              ))}
-            </div>
+        <div className="container fitpass-highlight">
+          <div className="fitpass-logo-placeholder" aria-label="FitPass ლოგოს ადგილი">
+            <img src="/images/fitpass.png" alt="FitPass ლოგო" />
           </div>
 
-          <aside className="fitpass-panel" aria-label="FitPass ინფორმაცია">
-            <span>FitPass</span>
-            <h2>მიიღება</h2>
+          <div>
+            <p className="eyebrow">ხელმისაწვდომი ვარჯიში</p>
+            <h2>დარბაზი იღებს FitPass-ს</h2>
             <p>
-              FitPass-ის გამოყენება შესაძლებელია. ვიზიტამდე დარეკეთ და გადაამოწმეთ მოქმედი
-              პირობები.
+              Pro fitness Digomi ხელმისაწვდომია FitPass-ის მომხმარებლებისთვისაც.
             </p>
-          </aside>
+            <a className="button primary fitpass-link" href="https://fitpass.ge/%E1%83%9D%E1%83%91%E1%83%98%E1%83%94%E1%83%A5%E1%83%A2%E1%83%94%E1%83%91%E1%83%98/pro-fitness-5" {...externalLinkProps}>
+              FitPass-ზე გადასვლა
+            </a>
+          </div>
         </div>
       </section>
     </>
