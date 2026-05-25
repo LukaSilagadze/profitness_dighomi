@@ -1,14 +1,16 @@
 import SectionHeader from '../components/SectionHeader.jsx';
-import { gymData } from '../data/gymData.js';
+import { useLanguage } from '../i18n/LanguageContext.jsx';
 
 export default function About() {
+  const { t } = useLanguage();
+  const [environment, start, trainers] = t.about.sections;
+
   return (
     <>
       <section className="page-hero">
         <div className="container">
-          <SectionHeader eyebrow="ჩვენს შესახებ" title="მშვიდი სივრცე ფოკუსირებული ვარჯიშისთვის">
-            {gymData.name} მდებარეობს {gymData.landmark}თან ახლოს და ორიენტირებულია სუფთა,
-            ფართო და არაგადატვირთულ გარემოზე.
+          <SectionHeader eyebrow={t.about.hero.eyebrow} title={t.about.hero.title}>
+            {t.about.hero.body}
           </SectionHeader>
         </div>
       </section>
@@ -16,43 +18,31 @@ export default function About() {
       <section className="section">
         <div className="container about-section">
           <div className="prose">
-            <p className="eyebrow">გარემო</p>
-            <h2>სუფთა, ფართო და მშვიდი დარბაზი</h2>
-            <p>
-              დარბაზი კომფორტულია როგორც დამწყებისთვის, ისე მათთვის, ვინც უკვე რეგულარულად
-              ვარჯიშობს. სივრცე მოწესრიგებულია, მშვიდია და არ არის გადატვირთული.
-            </p>
-            <p>
-              აქ შეგიძლია ივარჯიშო კონცენტრირებულად, ზედმეტი ხმაურისა და დაძაბული ატმოსფეროს
-              გარეშე. მდებარეობა გუდვილ დიღომთან ახლოს ყოველდღიურ ვიზიტსაც მარტივს ხდის.
-            </p>
+            <p className="eyebrow">{environment.eyebrow}</p>
+            <h2>{environment.title}</h2>
+            {environment.paragraphs.map((paragraph) => (
+              <p key={paragraph}>{paragraph}</p>
+            ))}
           </div>
 
-          <figure className="about-image-placeholder">
-            <span>ფოტოს ადგილი</span>
-            <p>დარბაზის საერთო სივრცე</p>
-          </figure>
+          <div className="about-image-placeholder">
+            <img src="/images/image1.jpg" alt={environment.imageAlt} />
+          </div>
         </div>
       </section>
 
       <section className="section section-muted">
         <div className="container about-section about-section-reverse">
-          <figure className="about-image-placeholder">
-            <span>ფოტოს ადგილი</span>
-            <p>კარდიო და ტრენაჟორები</p>
-          </figure>
+          <div className="about-image-placeholder">
+            <img src="/images/image2.jpg" alt={start.imageAlt} />
+          </div>
 
           <div className="prose">
-            <p className="eyebrow">დაწყება</p>
-            <h2>დამწყებისთვის მეგობრული ატმოსფერო</h2>
-            <p>
-              პირველი ნაბიჯი ხშირად ყველაზე რთულია. Pro fitness Digomi-ში გარემო მარტივი,
-              მშვიდი და მხარდამჭერია, რომ ვარჯიში თავდაჯერებულად დაიწყო.
-            </p>
-            <p>
-              შეგიძლია მშვიდად გაეცნო ტრენაჟორებს, აირჩიო ტემპი და თანდათან გაზარდო დატვირთვა.
-              მთავარი აქ სტაბილური პროგრესია, არა ზედმეტი წნეხი.
-            </p>
+            <p className="eyebrow">{start.eyebrow}</p>
+            <h2>{start.title}</h2>
+            {start.paragraphs.map((paragraph) => (
+              <p key={paragraph}>{paragraph}</p>
+            ))}
           </div>
         </div>
       </section>
@@ -60,26 +50,19 @@ export default function About() {
       <section className="section">
         <div className="container about-section">
           <div className="prose">
-            <p className="eyebrow">მწვრთნელები</p>
-            <h2>პერსონალური ვარჯიში პროფესიონალთან ერთად</h2>
-            <p>
-              პერსონალური ვარჯიში ხელმისაწვდომია მათთვის, ვისაც სურს სწორი ტექნიკა,
-              სტაბილური პროგრამა და პროფესიონალური მხარდაჭერა.
-            </p>
-            <p>
-              მწვრთნელები და ინსტრუქტორები მისაწვდომ და პროფესიონალურ შთაბეჭდილებას ტოვებენ,
-              რაც პირველ ვიზიტს უფრო მარტივს ხდის.
-            </p>
+            <p className="eyebrow">{trainers.eyebrow}</p>
+            <h2>{trainers.title}</h2>
+            {trainers.paragraphs.map((paragraph) => (
+              <p key={paragraph}>{paragraph}</p>
+            ))}
           </div>
 
           <div className="about-placeholder-grid">
             <figure className="about-image-placeholder small">
-              <span>ფოტო</span>
-              <p>პერსონალური ვარჯიში</p>
+              <img src="/images/image3.jpg" alt={trainers.imageAltPrimary} />
             </figure>
             <figure className="about-image-placeholder small">
-              <span>ფოტო</span>
-              <p>თავისუფალი წონები</p>
+              <img src="/images/image4.jpg" alt={trainers.imageAltSecondary} />
             </figure>
           </div>
         </div>

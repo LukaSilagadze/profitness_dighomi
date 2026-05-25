@@ -1,44 +1,17 @@
 import SectionHeader from '../components/SectionHeader.jsx';
 import { externalLinkProps } from '../data/gymData.js';
+import { useLanguage } from '../i18n/LanguageContext.jsx';
 
-const packageIncludes = ['სავარჯიშო დარბაზი', 'ულიმიტო ვიზიტები'];
-const fitpassLogoSrc = `${import.meta.env.BASE_URL}images/fitpass.png`;
-
-const pricePackages = [
-  {
-    title: 'დღიური აბონიმენტი',
-    price: '20 ₾',
-    note: 'ერთჯერადი ვიზიტი',
-  },
-  {
-    title: '7-დღიანი აბონიმენტი',
-    price: '70 ₾',
-    note: '7 დღე',
-  },
-  {
-    title: 'თვიური აბონიმენტი',
-    price: '150 ₾',
-    note: '30 დღე',
-  },
-  {
-    title: 'ოჯახის აბონიმენტი',
-    price: '250 ₾',
-    note: 'ოჯახური პაკეტი',
-  },
-  {
-    title: 'სტუდენტების აბონიმენტი',
-    price: '100 ₾',
-    note: 'სტუდენტური პირობით',
-  },
-];
+const fitpassLogoSrc = '/images/fitpass.png';
 
 export default function Pricing() {
+  const { t } = useLanguage();
+
   return (
     <>
       <section className="page-hero">
         <div className="container">
-          <SectionHeader eyebrow="ფასები" title="პაკეტები და FitPass">
-          </SectionHeader>
+          <SectionHeader eyebrow={t.pricing.hero.eyebrow} title={t.pricing.hero.title} />
         </div>
       </section>
 
@@ -46,14 +19,15 @@ export default function Pricing() {
         <div className="container">
 
           <div className="price-package-grid">
-            {pricePackages.map((item) => (
+            {t.pricing.packages.map((item) => (
               <article className="price-package-card" key={item.title}>
                 <div>
+                  <p>{item.note}</p>
                   <h2>{item.title}</h2>
                 </div>
                 <strong>{item.price}</strong>
                 <ul>
-                  {packageIncludes.map((feature) => (
+                  {item.features.map((feature) => (
                     <li key={feature}>{feature}</li>
                   ))}
                 </ul>
@@ -65,18 +39,16 @@ export default function Pricing() {
 
       <section className="section">
         <div className="container fitpass-highlight">
-          <div className="fitpass-logo-placeholder" aria-label="FitPass ლოგოს ადგილი">
-            <img src={fitpassLogoSrc} alt="FitPass ლოგო" />
+          <div className="fitpass-logo-placeholder" aria-label={t.pricing.fitpass.logoAria}>
+            <img src={fitpassLogoSrc} alt={t.pricing.fitpass.logoAlt} />
           </div>
 
           <div>
-            <p className="eyebrow">ხელმისაწვდომი ვარჯიში</p>
-            <h2>დარბაზი იღებს FitPass-ს</h2>
-            <p>
-              Pro fitness Digomi ხელმისაწვდომია FitPass-ის მომხმარებლებისთვისაც.
-            </p>
+            <p className="eyebrow">{t.pricing.fitpass.eyebrow}</p>
+            <h2>{t.pricing.fitpass.title}</h2>
+            <p>{t.pricing.fitpass.body}</p>
             <a className="button primary fitpass-link" href="https://fitpass.ge/%E1%83%9D%E1%83%91%E1%83%98%E1%83%94%E1%83%A5%E1%83%A2%E1%83%94%E1%83%91%E1%83%98/pro-fitness-5" {...externalLinkProps}>
-              FitPass-ზე გადასვლა
+              {t.pricing.fitpass.link}
             </a>
           </div>
         </div>

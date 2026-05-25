@@ -2,50 +2,32 @@ import { Link } from 'react-router-dom';
 import ContactCards from '../components/ContactCards.jsx';
 import SectionHeader from '../components/SectionHeader.jsx';
 import { externalLinkProps, gymData } from '../data/gymData.js';
-
-const previewLinks = [
-  {
-    to: '/services',
-    title: 'სერვისები',
-    text: 'დარბაზი, წონები, კარდიო ზონა, ტრენაჟორები და პერსონალური ვარჯიში.',
-  },
-  {
-    to: '/pricing',
-    title: 'ფასები',
-    text: 'აქტუალური პირობები და FitPass-ის მიღება გადაამოწმეთ ტელეფონით.',
-  },
-  {
-    to: '/contact',
-    title: 'კონტაქტი',
-    text: 'დარეკეთ, ნახეთ რუკა და დაგეგმეთ პირველი ვარჯიში გუდვილ დიღომთან.',
-  },
-];
+import { useLanguage } from '../i18n/LanguageContext.jsx';
 
 export default function Home() {
+  const { t } = useLanguage();
+
   return (
     <>
       <section className="hero-section">
         <div className="container hero-content">
           <div className="hero-copy">
-            <p className="eyebrow">გუდვილ დიღომთან ახლოს</p>
+            <p className="eyebrow">{t.home.heroEyebrow}</p>
             <h1>{gymData.name}</h1>
-            <p className="hero-lead">
-              სუფთა, ფართო და მშვიდი დარბაზი პერსონალური ვარჯიშისთვის. დაიწყე თავდაჯერებულად,
-              პროფესიონალ ინსტრუქტორთან და გარემოში, სადაც ზედმეტი ხმაური არ გაბრკოლებს.
-            </p>
+            <p className="hero-lead">{t.home.heroLead}</p>
             <div className="hero-actions">
               <a className="button primary" href={gymData.phones[0].href}>
-                დარეკვა
+                {t.common.call}
               </a>
               <a className="button secondary" href={gymData.googleMaps} {...externalLinkProps}>
-                რუკაზე ნახვა
+                {t.common.viewMap}
               </a>
             </div>
           </div>
 
-          <div className="hero-media-placeholder" aria-label="მთავარი ვიდეო">
+          <div className="hero-media-placeholder" aria-label={t.aria.mainVideo}>
             <iframe
-              title="Pro fitness Digomi ვიდეო"
+              title={t.home.videoTitle}
               src="https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2F61557244419412%2Fvideos%2F534464599313130%2F&show_text=false&width=560&t=0&autoplay=true"
               width="560"
               height="314"
@@ -60,22 +42,22 @@ export default function Home() {
       </section>
 
       <section className="section tight">
-        <div className="container stats-strip" aria-label="მოკლე ინფორმაცია">
+        <div className="container stats-strip" aria-label={t.aria.quickInfo}>
           <div>
             <strong>{gymData.rating.value}</strong>
-            <span>{gymData.rating.source} შეფასება</span>
+            <span>{t.home.stats.ratingLabel}</span>
           </div>
           <div>
             <strong>{gymData.rating.reviews}</strong>
-            <span>მიმოხილვა</span>
+            <span>{t.common.reviews}</span>
           </div>
           <div>
             <strong>07:30 - 00:00</strong>
-            <span>ყოველდღე</span>
+            <span>{t.home.stats.hoursLabel}</span>
           </div>
           <div>
             <strong>FitPass</strong>
-            <span>მიიღება</span>
+            <span>{t.home.stats.fitpassLabel}</span>
           </div>
         </div>
       </section>
@@ -83,21 +65,20 @@ export default function Home() {
       <section className="section">
         <div className="container intro-grid">
           <div>
-            <SectionHeader eyebrow="პირველი ნაბიჯი მარტივია" title="დარბაზი, სადაც დაწყება არ გართულდება">
-              Pro fitness Digomi შექმნილია მათთვის, ვისაც სურს მშვიდი რიტმით, სუფთა სივრცეში
-              და პროფესიონალი მწვრთნელის გვერდით დაიწყოს ან გააგრძელოს ვარჯიში.
+            <SectionHeader eyebrow={t.home.intro.eyebrow} title={t.home.intro.title}>
+              {t.home.intro.body}
             </SectionHeader>
             <div className="inline-actions">
               <Link className="text-link" to="/about">
-                გაიგე მეტი
+                {t.common.learnMore}
               </Link>
               <Link className="text-link" to="/services">
-                ნახე სერვისები
+                {t.common.seeServices}
               </Link>
             </div>
           </div>
-          <ul className="highlight-list" aria-label="ძირითადი უპირატესობები">
-            {gymData.highlights.map((item) => (
+          <ul className="highlight-list" aria-label={t.aria.highlights}>
+            {t.services.highlights.map((item) => (
               <li key={item}>{item}</li>
             ))}
           </ul>
@@ -106,32 +87,28 @@ export default function Home() {
 
       <section className="section section-muted">
         <div className="container">
-          <SectionHeader eyebrow="რას ამბობენ სტუმრები" title="მშვიდი, სუფთა და პროფესიონალური გარემო">
-            შეფასებებში ყველაზე ხშირად ჩანს სისუფთავე, კარგი სივრცე, მშვიდი მუსიკა და
-            ინსტრუქტორების მეგობრული დამოკიდებულება.
+          <SectionHeader eyebrow={t.home.reviews.eyebrow} title={t.home.reviews.title}>
+            {t.home.reviews.body}
           </SectionHeader>
           <div className="card-grid reviews-grid">
-            {gymData.reviewThemes.map((theme) => (
+            {t.services.reviewThemes.map((theme) => (
               <article className="review-card" key={theme.title}>
                 <h2>{theme.title}</h2>
                 <p>{theme.description}</p>
               </article>
             ))}
           </div>
-          <p className="small-note">
-            მცირე შენიშვნებში ზოგჯერ ახსენებენ გახსნის დაგვიანებას და მხრის ვარჯიშისთვის
-            კონკრეტული ტრენაჟორების შეზღუდულ არჩევანს.
-          </p>
+          <p className="small-note">{t.home.reviews.note}</p>
         </div>
       </section>
 
       <section className="section">
         <div className="container">
-          <SectionHeader eyebrow="სწრაფი გზები" title="აირჩიე შემდეგი ნაბიჯი">
-            ნახე ძირითადი სერვისები, გადაამოწმე ფასები ტელეფონით ან პირდაპირ დაგეგმე ვიზიტი.
+          <SectionHeader eyebrow={t.home.quick.eyebrow} title={t.home.quick.title}>
+            {t.home.quick.body}
           </SectionHeader>
           <div className="card-grid preview-grid">
-            {previewLinks.map((item) => (
+            {t.home.previewLinks.map((item) => (
               <Link className="preview-card" to={item.to} key={item.to}>
                 <span>{item.title}</span>
                 <p>{item.text}</p>
@@ -143,8 +120,8 @@ export default function Home() {
 
       <section className="section contact-band">
         <div className="container">
-          <SectionHeader eyebrow="დაგვიკავშირდი" title="პირველი ვარჯიში იწყება ზარით">
-            ყველაზე სწრაფი გზა აქტუალური ინფორმაციის მისაღებად არის ტელეფონით დაკავშირება.
+          <SectionHeader eyebrow={t.home.contact.eyebrow} title={t.home.contact.title}>
+            {t.home.contact.body}
           </SectionHeader>
           <ContactCards />
         </div>
