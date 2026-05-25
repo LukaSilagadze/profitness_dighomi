@@ -2,9 +2,10 @@ import { useEffect, useState } from 'react';
 import { NavLink, Link, useLocation } from 'react-router-dom';
 import { gymData } from '../data/gymData.js';
 import { useLanguage } from '../i18n/LanguageContext.jsx';
+import { publicAsset } from '../utils/publicAsset.js';
 import LanguageSwitcher from './LanguageSwitcher.jsx';
 
-const logoSrc = '/images/logo.png';
+const logoSrc = publicAsset('/images/logo.png');
 
 function HeaderIcon({ children }) {
   return (

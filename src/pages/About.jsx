@@ -1,5 +1,6 @@
 import SectionHeader from '../components/SectionHeader.jsx';
 import { useLanguage } from '../i18n/LanguageContext.jsx';
+import { publicAsset } from '../utils/publicAsset.js';
 
 export default function About() {
   const { t } = useLanguage();
@@ -26,7 +27,7 @@ export default function About() {
           </div>
 
           <div className="about-image-placeholder">
-            <img src="/images/image1.jpg" alt={environment.imageAlt} />
+            <img src={publicAsset('/images/image1.jpg')} alt={environment.imageAlt} />
           </div>
         </div>
       </section>
@@ -34,7 +35,7 @@ export default function About() {
       <section className="section section-muted">
         <div className="container about-section about-section-reverse">
           <div className="about-image-placeholder">
-            <img src="/images/image2.jpg" alt={start.imageAlt} />
+            <img src={publicAsset('/images/image2.jpg')} alt={start.imageAlt} />
           </div>
 
           <div className="prose">
@@ -59,10 +60,10 @@ export default function About() {
 
           <div className="about-placeholder-grid">
             <figure className="about-image-placeholder small">
-              <img src="/images/image3.jpg" alt={trainers.imageAltPrimary} />
+              <img src={publicAsset('/images/image3.jpg')} alt={trainers.imageAltPrimary} />
             </figure>
             <figure className="about-image-placeholder small">
-              <img src="/images/image4.jpg" alt={trainers.imageAltSecondary} />
+              <img src={publicAsset('/images/image4.jpg')} alt={trainers.imageAltSecondary} />
             </figure>
           </div>
         </div>

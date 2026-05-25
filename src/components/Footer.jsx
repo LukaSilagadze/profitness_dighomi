@@ -1,8 +1,9 @@
 import { Link } from 'react-router-dom';
 import { externalLinkProps, gymData } from '../data/gymData.js';
 import { useLanguage } from '../i18n/LanguageContext.jsx';
+import { publicAsset } from '../utils/publicAsset.js';
 
-const logoSrc = '/images/logo.png';
+const logoSrc = publicAsset('/images/logo.png');
 
 export default function Footer() {
   const { t } = useLanguage();

@@ -1,23 +1,23 @@
 import { useEffect, useRef, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useLanguage } from '../i18n/LanguageContext.jsx';
+import { publicAsset } from '../utils/publicAsset.js';
 
 function FlagIcon({ languageId }) {
   if (languageId === 'en') {
     return (
-      <img src={`/images/uk.svg`} alt="" aria-hidden="true" />
+      <img src={publicAsset('/images/uk.svg')} alt="" aria-hidden="true" />
     );
   }
 
   if (languageId === 'ru') {
     return (
-      <img src={`/images/russia.svg`} alt="" aria-hidden="true" />
+      <img src={publicAsset('/images/russia.svg')} alt="" aria-hidden="true" />
     );
   }
 
   return (
-    <img src={`/images/georgia.svg`} alt="" aria-hidden="true" />
-    
+    <img src={publicAsset('/images/georgia.svg')} alt="" aria-hidden="true" />
   );
 }
 

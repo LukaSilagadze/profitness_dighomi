@@ -1,8 +1,9 @@
 import SectionHeader from '../components/SectionHeader.jsx';
 import { externalLinkProps } from '../data/gymData.js';
 import { useLanguage } from '../i18n/LanguageContext.jsx';
+import { publicAsset } from '../utils/publicAsset.js';
 
-const fitpassLogoSrc = '/images/fitpass.png';
+const fitpassLogoSrc = publicAsset('/images/fitpass.png');
 
 export default function Pricing() {
   const { t } = useLanguage();
