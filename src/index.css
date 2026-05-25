@@ -454,7 +454,7 @@ main {
   max-width: 820px;
   margin: 0;
   font-family: var(--font-display);
-  font-size: clamp(4.5rem, 13vw, 9rem);
+  font-size: clamp(4.5rem, 13vw, 7rem);
   line-height: 0.86;
   letter-spacing: 0;
   text-wrap: balance;
@@ -472,7 +472,7 @@ main {
   max-width: 690px;
   margin: 20px 0 0;
   color: rgba(240, 240, 240, 0.84);
-  font-size: clamp(1rem, 2vw, 1.18rem);
+  font-size: clamp(1rem, 2vw, 1rem);
 }
 
 .hero-actions,
